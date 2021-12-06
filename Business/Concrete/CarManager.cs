@@ -1,6 +1,7 @@
 ﻿using Business.Abstract;
 using DataAccess.Abstract;
 using Entities.Concrete;
+using Entities.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -9,6 +10,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
+        //cunstroctor injection
         ICarDal _carDal;
         public CarManager(ICarDal carDal)
         {
@@ -38,6 +40,17 @@ namespace Business.Concrete
         public List<Car> GetAllByCarId(int id)
         {
             return _carDal.GetAll(c=>c.CarId==id);
+        }
+
+        //select * form cars where carId=5
+        public Car GetById(int carId)
+        {
+            return _carDal.Get(c=> c.CarId == carId);
+        }
+
+        public List<CarDetailDto> GetCarDetails()
+        {
+            return _carDal.GetCarDetails();
         }
 
         public List<Car> GetCarsByBrandId(int id)
