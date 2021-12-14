@@ -12,7 +12,7 @@ namespace Business.Concrete
 {
     public class CarManager : ICarService
     {
-        //cunstroctor injection
+        //constructor injection
         ICarDal _carDal;
         public CarManager(ICarDal carDal)
         {
